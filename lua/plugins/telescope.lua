@@ -1,6 +1,6 @@
 local M = {
     "nvim-telescope/telescope.nvim",
-    lazyy = true,
+    lazy = true,
     dependencies = {"nvim-lua/plenary.nvim"}
 }
 M.config = function()
@@ -11,10 +11,11 @@ M.config = function()
     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", { silent = true })
- vim.keymap.set("n", 'gI', ":lua require('telescope.builtin').lsp_implementations()<cr>",{ noremap = true, silent = true })
- vim.keymap.set("n", 'gr', ":lua require('telescope.builtin').lsp_references()<cr>", { noremap = true, silent = true })
- vim.keymap.set("n", 'gd', ":lua require('telescope.builtin').lsp_definitions()()<cr>", { noremap = true, silent = true })
- vim.keymap.set("n", ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
+		vim.keymap.set("n", 'gI', ":lua require('telescope.builtin').lsp_implementations()<cr>",{ noremap = true, silent = true })
+    vim.keymap.set("n", 'gr', ":lua require('telescope.builtin').lsp_references()<cr>", { noremap = true, silent = true })
+    vim.keymap.set("n", 'gd', ":lua require('telescope.builtin').lsp_definitions()()<cr>", { noremap = true, silent = true })
+		vim.keymap.set("n", '<leader>ca', ":lua require('telescope.builtin').lsp_code_actions()<cr>", { noremap = true, silent = true })
+    vim.keymap.set("n", ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
     vim.keymap.set("n", '<leader>D', vim.diagnostic.open_float, { noremap = true, silent = true })
 end
 

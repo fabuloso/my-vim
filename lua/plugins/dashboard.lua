@@ -9,7 +9,8 @@ local M =
 						limit = 5,
 						icon = '',
 						label = 'Recent Files',
-						action = 'Telescope find_files cwd='
+						action = 'Telescope find_files cwd=',
+						header = 'Recent Files'
 					},
 					mru = {
 						limit = 5,

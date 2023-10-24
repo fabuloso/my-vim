@@ -1,6 +1,9 @@
 local M = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim"
+    "williamboman/mason.nvim"
 }
+
+M.config = function ()
+	require("mason").setup()
+end
 
 return M

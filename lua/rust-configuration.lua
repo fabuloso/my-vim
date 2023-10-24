@@ -18,7 +18,8 @@ nvim_lsp.rust_analyzer.setup({
 				},
 				checkOnSave = {
 					command = 'clippy'
-				}
+				},
+				allFeatures = true
 			}
 		}
 	}
@@ -32,7 +33,6 @@ rt.setup({
 			vim.keymap.set('n', '<C-space>', rt.hover_actions.hover_actions, { buffer = bufnr })
 			vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })		
 			vim.keymap.set('n', '<Leader>a', rt.code_action_group.code_action_group, { buffer = bufnr })
-			vim.keymap.set('v', '<Leader>a', rt.code_action_group.range_code_action, { buffer = bufnr })	
 		end,
 	},
 })

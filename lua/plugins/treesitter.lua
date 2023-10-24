@@ -12,14 +12,24 @@ M.config = function()
 		},
 		ensure_installed = {
 			'lua',
+			'graphql',
 			'json',
 			'rust',
+			'markdown',
 			'javascript',
 			'typescript',
 			'tsx',
 			'css',
 			'toml',
 			'python',
+		},
+		indent = {
+			enable = true,
+		},
+		rainbow = {
+			enable = true,
+			extended_mode = true,
+			max_file_lines = nil,
 		}
 	})
 end

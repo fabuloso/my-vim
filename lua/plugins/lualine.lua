@@ -11,7 +11,7 @@ M.config = function()
     lualine.setup({
     	options = {
     		icons_enabled = true,
-    		theme = 'onedark',
+    		theme = 'nordic',
     	}
     })
 end
