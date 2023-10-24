@@ -31,12 +31,10 @@ lazy.opts = {
 }
 
 lazy.setup("plugins")
-require('rust-configuration')
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('onedark')
+vim.cmd.colorscheme('nordic')
 vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
-
 
 vim.opt.number = true
 vim.opt.mouse = 'a'
