@@ -11,7 +11,7 @@ M.config = function()
  	},
  	highlights = {
  		buffer_selected = {
- 			italic = false
+ 			italic = true
 		},
  		indicator_selected = {
  			fg = { attribute = 'fg', highlight = 'Function' },
@@ -19,5 +19,8 @@ M.config = function()
  		}
  	}
  })
+	local bufferline = require('bufferline')
+	vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>')
+	vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>')
  end
 return M

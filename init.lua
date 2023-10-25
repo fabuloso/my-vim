@@ -33,7 +33,7 @@ lazy.opts = {
 lazy.setup("plugins")
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('nordic')
+vim.cmd.colorscheme('catppuccin')
 vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
 
 vim.opt.number = true

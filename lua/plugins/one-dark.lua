@@ -1,11 +1,13 @@
 local M = {
-    'AlexvZyl/nordic.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-        require 'nordic' .load()
-    end
+	'catppuccin/nvim',
+	name = 'catppuccin',
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require 'catppuccin' .setup({
+			flavour = 'frappe'
+		})
+	end
 }
-
 return M
 

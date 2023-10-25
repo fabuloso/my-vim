@@ -1,8 +1,8 @@
 local M = {
     "nvim-telescope/telescope.nvim",
-    lazy = true,
     dependencies = {"nvim-lua/plenary.nvim"}
 }
+
 M.config = function()
     local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
