@@ -1,9 +1,13 @@
 local M = {
     'akinsho/bufferline.nvim', version = '*', dependencies ='nvim-tree/nvim-web-devicons'
 }
+
 M.config = function() 
- require('bufferline').setup({
+ local bufferline = require('bufferline')
+ 
+ bufferline.setup({
  	options = {
+		theme = 'catpuccin',
  		mode = 'buffers',
  		offsets = {
  			{ filetype = 'NvimTree' }
@@ -11,16 +15,16 @@ M.config = function()
  	},
  	highlights = {
  		buffer_selected = {
- 			italic = false
+ 			italic = true
 		},
  		indicator_selected = {
  			fg = { attribute = 'fg', highlight = 'Function' },
- 			italic = false
+ 			italic = true
  		}
  	}
  })
-	local bufferline = require('bufferline')
 	vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>')
 	vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>')
  end
+
 return M
