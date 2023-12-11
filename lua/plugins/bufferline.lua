@@ -11,7 +11,7 @@ M.config = function()
  	},
  	highlights = {
  		buffer_selected = {
- 			italic = true
+ 			italic = false
 		},
  		indicator_selected = {
  			fg = { attribute = 'fg', highlight = 'Function' },

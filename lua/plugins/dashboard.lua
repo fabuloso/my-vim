@@ -20,8 +20,8 @@ local M =
 				}
 			} 
 		end, 
-		dependencies =  'nvim-tree/nvim-web-devicons' 
+		dependencies =  'nvim-tree/nvim-web-devicons' ,
+	  enable = false
 	}
-
 
 return M
