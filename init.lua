@@ -21,6 +21,8 @@ function lazy.setup(plugins)
 	require('lazy').setup(plugins, lazy.opts)
 end
 
+vim.opt.termguicolors = true
+vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {
 	dev = {
@@ -30,12 +32,10 @@ lazy.opts = {
 	},
 }
 lazy.setup("plugins")
+
 --require("rust-configuration")
-
-vim.opt.termguicolors = true
-vim.cmd.colorscheme('catppuccin')
-vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
-
+--
+vim.cmd.colorscheme "catppuccin"
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.ignorecase = true
