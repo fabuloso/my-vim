@@ -2,6 +2,7 @@
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
+
 lspconfig.rust_analyzer.setup {
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
@@ -12,7 +13,11 @@ lspconfig.rust_analyzer.setup {
           },
           prefix = "self",
          },
+				 check = {
+						features = "all",		
+			   },
          cargo = {
+	  			features = "all",
           buildScripts = {
            enable = true,
           },
@@ -20,11 +25,10 @@ lspconfig.rust_analyzer.setup {
          procMacro = {
           enable = true
          },
-	  	   checkOnSave = {
-					allFeatures = true,
-				  command = "clippy",
-					extraArgs = { "--no-deps"}
-	    	 },
+	  	  -- checkOnSave = {
+				--  command = "clippy",
+				--	extraArgs = { "--no-deps"}
+	    	-- },
 				 
 	  },
   },
@@ -76,3 +80,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 	group = format_sync_grp,
 })
+

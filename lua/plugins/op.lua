@@ -1,5 +1,5 @@
 local M = {
-	'voldikss/vim-floaterm'
+	'mrjones2014/op.nvim'
 }
 
 

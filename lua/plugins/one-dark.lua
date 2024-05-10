@@ -7,6 +7,7 @@ local M = {
 		require 'catppuccin' .setup({
 			flavour = 'frappe'
 		})
+
 	end
 }
 return M

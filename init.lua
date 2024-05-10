@@ -30,7 +30,7 @@ lazy.opts = {
 	},
 }
 lazy.setup("plugins")
-require("rust-configuration")
+--require("rust-configuration")
 
 vim.opt.termguicolors = true
 vim.cmd.colorscheme('catppuccin')
