@@ -3,8 +3,10 @@ local M = {
 }
 
 M.config = function() 
+ vim.cmd.colorscheme "catppuccin"
  require('bufferline').setup({
  	options = {
+		separator_style = "slant",
  		mode = 'buffers',
 		highlights = require("catppuccin.groups.integrations.bufferline").get(),
  		offsets = {
@@ -12,10 +14,10 @@ M.config = function()
  		},
  	},
  })
-	local bufferline = require('bufferline')
 	vim.keymap.set('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<cr>')
 	vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>')
 	vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>')
+	vim.keymap.set('n', '<C-x>', '<cmd>:bd<cr>')
  end
 
 return M

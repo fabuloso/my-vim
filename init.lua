@@ -23,6 +23,7 @@ end
 
 vim.opt.termguicolors = true
 vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
+
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {
 	dev = {
@@ -31,11 +32,10 @@ lazy.opts = {
 		fallback = false,
 	},
 }
+
 lazy.setup("plugins")
 
---require("rust-configuration")
---
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-mocha"
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.ignorecase = true

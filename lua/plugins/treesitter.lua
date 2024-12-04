@@ -14,6 +14,7 @@ M.config = function()
 			'lua',
 			'graphql',
 			'json',
+			'jsonc',
 			'rust',
 			'markdown',
 			'javascript',
@@ -32,6 +33,14 @@ M.config = function()
 			max_file_lines = nil,
 		}
 	})
+
+	local opt = vim.opt
+
+	opt.foldmethod = "expr"
+	opt.foldexpr = "nvim_treesitter#foldexpr()"
+	opt.foldlevel = 9
+
 end
+
 
 return M
