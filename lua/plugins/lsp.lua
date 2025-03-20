@@ -1,13 +1,13 @@
 local M = {
 	"neovim/nvim-lspconfig",
-  	dependencies = {
+	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 	}
 }
 
-M.config = function() 
- 	local lspconfig = require('lspconfig')
+M.config = function()
+	local lspconfig = require('lspconfig')
 	lspconfig.lua_ls.setup {}
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -24,41 +24,15 @@ M.config = function()
 	}
 
 	mason_lspconfig.setup_handlers({
-				function(server_name)
-					lspconfig[server_name].setup({
-						on_attach = format,
-					})
-				end,
---			  ['rust_analyzer'] = function()
---					lspconfig.rust_analyzer.setup({
---						settings = {
---						 ["rust-analyzer"] = {
---			   		 		imports = {
---			   		 		 granularity = {
---			   		 		   group = "module",
---			   		 		 },
---			   		 		 prefix = "self",
---			   		 		},
---				 		 		check = {
---				 		 		 	features = "all",
---				 		 		},
---			   		 		cargo = {
---				 		 		 features = "all",
---			   		 		 buildScripts = {
---			   		 		  enable = false,
---			   		 		 },
---			   		 		},
---			   		 		procMacro = {
---			   		 		 enable = true
---			   		 		},
---					},
---				}
---			})
---	end
+		function(server_name)
+			lspconfig[server_name].setup({
+				on_attach = format,
+			})
+		end,
 	})
 
 	require("lspconfig").graphql.setup({
-	 	cmd = { "graphql-lsp", "server", "-m", "stream" },
+		cmd = { "graphql-lsp", "server", "-m", "stream" },
 		filetypes = { "graphql" },
 		root_dir = require("lspconfig.util").root_pattern(".git", ".graphqlrc", ".graphqlrc.json"),
 	})
@@ -67,10 +41,10 @@ M.config = function()
 	})
 
 	require("lspconfig").ts_ls.setup {
- 	 on_attach = on_attach,
- 	 filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
- 	 cmd = { "typescript-language-server", "--stdio" }
-	} 
+		on_attach = on_attach,
+		filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+		cmd = { "typescript-language-server", "--stdio" }
+	}
 
 	require("lspconfig").pyright.setup {
 		capabilities = capabilities,
@@ -83,8 +57,6 @@ M.config = function()
 			}
 		}
 	}
-
 end
 
 return M
-

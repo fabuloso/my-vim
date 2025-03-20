@@ -7,7 +7,7 @@ function lazy.install(path)
 		vim.fn.system({
 			'git',
 			'clone',
-			'--filter=blob:nonce',
+			'--filter=blob:none',
 			'https://github.com/folke.lazy.nvim.git',
 			'--branch=stable',
 			path,
