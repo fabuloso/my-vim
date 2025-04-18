@@ -49,6 +49,7 @@ M.config = function()
 	require("lspconfig").pyright.setup {
 		capabilities = capabilities,
 		settings = {
+			venvPath = ".venv",
 			python = {
 				analysis = {
 					autoSearchPaths = true,

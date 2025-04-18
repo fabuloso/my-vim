@@ -10,10 +10,10 @@ M.config = function()
 		},
 		server = {
 			on_attach = function(_, bufnr)
-				vim.keymap.set('n', '<space>ce', '<Cmd>RustLsp explainError<CR>', { buffer = bufnr })
+				vim.keymap.set('n', '<space>ce', '<Cmd>RustLsp relatedDiagnostics<CR>', { buffer = bufnr })
 				vim.keymap.set('n', '<space>cm', '<Cmd>RustLsp expandMacro<CR>', { buffer = bufnr })
 				vim.keymap.set('n', '<space>ca', '<Cmd>RustLsp codeAction<CR>', { buffer = bufnr })
-				vim.keymap.set('v', '<space>ca', '<Cmd>RustLsp rangeCodeAction<CR>', { buffer = bufnr })
+				vim.keymap.set('v', '<space>ca', '<Cmd>RustLsp codeAction<CR>', { buffer = bufnr })
 			end,
 			default_settings = {
 				['rust-analyzer'] = {
