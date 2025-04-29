@@ -1,6 +1,3 @@
-local M = {
+return {
 	'voldikss/vim-floaterm'
 }
-
-
-return M

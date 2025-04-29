@@ -3,7 +3,7 @@ local M = {
 	requires = { "nvim-lua/plenary.nvim" },
 }
 
-M.config =  function() 
+M.config = function()
 	local gitsigns = require("gitsigns")
 	gitsigns.setup()
 end

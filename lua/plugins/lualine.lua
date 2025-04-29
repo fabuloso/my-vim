@@ -6,14 +6,14 @@ local M = {
 	config = true,
 }
 
-M.config = function() 
-    local lualine = require('lualine')
-    lualine.setup({
-    	options = {
-    		icons_enabled = true,
-    		theme = 'catppuccin',
-    	}
-    })
+M.config = function()
+	local lualine = require('lualine')
+	lualine.setup({
+		options = {
+			icons_enabled = true,
+			theme = 'catppuccin',
+		}
+	})
 end
 
 return M

@@ -1,4 +1,4 @@
-local M = {'https://codeberg.org/esensar/nvim-dev-container', depenencies = 'nvim-treesitter/nvim-treesitter'}
+local M = { 'https://codeberg.org/esensar/nvim-dev-container', depenencies = 'nvim-treesitter/nvim-treesitter' }
 
 M.config = function()
 	require("devcontainer").setup {
