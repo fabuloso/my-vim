@@ -1,6 +1,3 @@
-local M = {
+return {
 	'mrjones2014/op.nvim'
 }
-
-
-return M

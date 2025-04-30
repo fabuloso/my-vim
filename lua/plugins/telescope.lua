@@ -5,10 +5,9 @@ local M = {
 
 M.config = function()
 	local builtin = require('telescope.builtin')
-	local obsidian = require('obsidian')
 	vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
 	vim.keymap.set('n', '<leader>fw', builtin.live_grep, { desc = 'Live Grep' })
-	vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {}, 'Recents')
+	vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Recents' })
 	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 	vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 	vim.keymap.set('n', '<leader>fn', '<cmd>ObsidianSearch<cr>', { desc = 'Find Notes' })
@@ -20,8 +19,8 @@ M.config = function()
 	vim.keymap.set("n", 'gm', builtin.marks, { noremap = true, silent = true })
 	vim.keymap.set("n", '<leader>cd', builtin.diagnostics, { noremap = true, silent = true })
 	vim.keymap.set("n", '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true })
-	vim.keymap.set("n", ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
-	vim.keymap.set("n", '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
+	vim.keymap.set("n", ']d', function() vim.diagnostic.jump({ count = 1 }) end, { noremap = true, silent = true })
+	vim.keymap.set("n", '[d', function() vim.diagnostic.jump({ count = -1 }) end, { noremap = true, silent = true })
 end
 
 return M
