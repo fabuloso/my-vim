@@ -13,6 +13,9 @@ M.config = function()
 
 	require("mason").setup()
 	local mason_lspconfig = require("mason-lspconfig")
+
+	print(vim.inspect(mason_lspconfig.setup_handlers))
+
 	mason_lspconfig.setup {
 		ensure_installed = {
 			"ts_ls",
@@ -22,14 +25,6 @@ M.config = function()
 			"phpactor"
 		}
 	}
-
-	mason_lspconfig.setup_handlers({
-		function(server_name)
-			lspconfig[server_name].setup({
-				on_attach = format,
-			})
-		end,
-	})
 
 	lspconfig.lua_ls.setup({
 		on_attach = on_attach,

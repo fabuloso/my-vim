@@ -1,7 +1,7 @@
 local M = {
 	'goolord/alpha-nvim',
-	dependencies = {'nvim-tree/nvim-web-devicons'} ,
-	event= 'VimEnter',
+	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	event = 'VimEnter',
 	init = false,
 	config = function()
 		require('alpha').setup(require('alpha.themes.dashboard').config)
@@ -28,13 +28,13 @@ local M = {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣿⣿⡿⠿⠿⠿⣿⣿⡆⠀⠀⠈⢿⣿⠃⠀⠀⠰⣿⣿⠿⠿⠿⢿⣿⣿⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢧⡀⠀⠀⠘⠉⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀⠈⠛⠀⠀⠀⣠⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 		]]
-		
+
 		dashboard.section.header.val = vim.split(logo, '\n')
 		dashboard.section.buttons.val = {
-			dashboard.button( "e", "  New File", ":enew<CR>"),
-			dashboard.button( "f", "  Find File", ":Telescope find_files<CR>"),
-			dashboard.button( "l", " Lazy", "<cmd> Lazy <CR>"),
-			dashboard.button( "m", " Mason", "<cmd> Mason <CR>"),
+			dashboard.button("e", "  New File", ":enew<CR>"),
+			dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
+			dashboard.button("l", " Lazy", "<cmd> Lazy <CR>"),
+			dashboard.button("m", " Mason", "<cmd> Mason <CR>"),
 		}
 		return dashboard
 	end
