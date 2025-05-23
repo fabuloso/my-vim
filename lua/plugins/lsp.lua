@@ -60,6 +60,19 @@ M.config = function()
 	})
 
 	require("lspconfig").phpactor.setup({
+		cmd = { "phpactor", "language-server" },
+		filetypes = { "php" },
+		root_dir = require("lspconfig.util").root_pattern(".git", ".phpactor.json", "psalm.xml", "composer.json"),
+		language_server_phpstan = {
+			enabled = true,
+		},
+		language_server_psalm = {
+			enabled = false,
+		},
+		on_attach = function(_client, bufnr)
+			local opts = { noremap = true, silent = true }
+			vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+		end,
 	})
 
 	require("lspconfig").ts_ls.setup {

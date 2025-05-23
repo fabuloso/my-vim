@@ -26,7 +26,7 @@ require("lazy").setup({
 	spec = 'plugins',
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "habamax" } },
+	install = { colorscheme = { "catppuccin-mocha" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
@@ -50,7 +50,6 @@ vim.diagnostic.config({
 vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
 
 
-vim.cmd.colorscheme "catppuccin-mocha"
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.ignorecase = true
@@ -60,5 +59,4 @@ vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.expandtab = false
-vim.g.mapleader = ' '
+vim.opt.expandtab = true

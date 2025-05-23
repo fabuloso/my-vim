@@ -5,7 +5,7 @@ local M = {
 M.config = function()
 	require('conform').setup({
 		formatters_by_ft = {
-			rust = { "rustfmt", lsp_format = "fallback" },
+			rust = { "rustfmt" },
 			php = { "php-cs-fixer" },
 		},
 		formatters = {
@@ -13,10 +13,12 @@ M.config = function()
 				command = "php-cs-fixer",
 				args = {
 					"fix",
-					"--rules=@PSR12", -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
-					"$FILENAME",
+					"--using-cache=no",
+					"--config=.php-cs-fixer.dist.php",
+					"--quiet",
+					"-",
 				},
-				stdin = false,
+				stdin = true,
 			},
 		},
 		format_on_save = {
