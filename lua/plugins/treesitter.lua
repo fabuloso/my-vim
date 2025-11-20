@@ -11,6 +11,7 @@ M.config = function()
       enable = true,
     },
     ensure_installed = {
+      'elixir',
       'lua',
       'graphql',
       'json',

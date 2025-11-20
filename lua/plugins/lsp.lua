@@ -20,7 +20,7 @@ M.config = function()
       "lua_ls",
       "pyright",
       "graphql",
-      "phpactor"
+      "phpactor",
     }
   }
   vim.lsp.enable('lua_ls')
@@ -63,12 +63,12 @@ M.config = function()
   vim.lsp.config('phpactor', {
     cmd = { "phpactor", "language-server" },
     filetypes = { "php" },
-    root_dir = require("lspconfig.util").root_pattern(".git", ".phpactor.json", "psalm.xml", "composer.json"),
+    --root_dir = require("lspconfig.util").root_pattern(".git", ".phpactor.json", "psalm.xml", "composer.json"),
     language_server_phpstan = {
       enabled = true,
     },
     language_server_psalm = {
-      enabled = false,
+      enabled = true,
     },
     on_attach = function(_, bufnr)
       local opts = { noremap = true, silent = true }
@@ -87,8 +87,10 @@ M.config = function()
   vim.lsp.config('pyright', {
     capabilities = capabilities,
     settings = {
-      venvPath = ".venv",
       python = {
+        formatting = {
+          provider = "black",
+        },
         analysis = {
           autoSearchPaths = true,
           useLibraryCodeForTypes = true
