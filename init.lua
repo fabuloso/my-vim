@@ -23,10 +23,10 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = "plugins",
   -- Configure any other settings here. See the documentation for more details.
   install = { colorscheme = { "catppuccin-mocha" } },
   checker = { enabled = true },
+  spec = "plugins",
 })
 
 vim.diagnostic.config({

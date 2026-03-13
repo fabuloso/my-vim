@@ -55,6 +55,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "zbirenbaum/copilot.lua",
+    "cairijun/codecompanion-agentskills.nvim"
   },
   opts = {
     adapters = {
@@ -69,6 +70,12 @@ return {
           })
         end,
       },
+    },
+    extensions = {
+      agentskills = {
+        opts = {
+          paths = { vim.fn.getcwd() .. "/.github/skills", recursive = true } }
+      }
     },
     prompt_library = {
       ["Lsp fix"] = {

@@ -5,7 +5,7 @@ local M = {
 M.config = function()
   require('snacks').setup({
     keys = {
-      { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" }
+      { "<leader><space>", function() require('snacks').picker.smart() end, desc = "Smart Find Files" }
     }
   })
 end
