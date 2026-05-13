@@ -39,7 +39,7 @@ M.config = function()
   local opt = vim.opt
 
   opt.foldmethod = "expr"
-  opt.foldexpr = "nvim_treesitter#foldexpr()"
+  opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
   opt.foldlevel = 9
 end
 

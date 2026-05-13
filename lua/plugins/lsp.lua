@@ -9,10 +9,7 @@ local M = {
 M.config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-  require("mason").setup()
   local mason_lspconfig = require("mason-lspconfig")
-
-  print(vim.inspect(mason_lspconfig.setup_handlers))
 
   mason_lspconfig.setup {
     ensure_installed = {
@@ -26,7 +23,6 @@ M.config = function()
   vim.lsp.enable('lua_ls')
 
   vim.lsp.config('lua_ls', {
-    on_attach = on_attach,
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -64,11 +60,9 @@ M.config = function()
     cmd = { "phpactor", "language-server" },
     filetypes = { "php" },
     --root_dir = require("lspconfig.util").root_pattern(".git", ".phpactor.json", "psalm.xml", "composer.json"),
-    language_server_phpstan = {
-      enabled = true,
-    },
-    language_server_psalm = {
-      enabled = true,
+    init_options = {
+      ["language_server_phpstan.enabled"] = true,
+      ["language_server_psalm.enabled"] = true,
     },
     on_attach = function(_, bufnr)
       local opts = { noremap = true, silent = true }
@@ -78,7 +72,6 @@ M.config = function()
 
   vim.lsp.enable('ts_ls')
   vim.lsp.config('ts_ls', {
-    on_attach = on_attach,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" }
   })

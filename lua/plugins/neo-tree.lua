@@ -1,11 +1,6 @@
 local M = {
   'nvim-tree/nvim-tree.lua',
-  lazy = false,
-  keys = { {
-    "<Leader>e",
-    "<cmd>NvimTreeToggle<CR>",
-    desc = "toggle NvimTree"
-  } }
+  enabled = false,
 }
 
 M.config = function()
@@ -24,13 +19,6 @@ M.config = function()
         })
       end
 
-      vim.api.nvim_create_autocmd("BufEnter", {
-        callback = function()
-          require("nvim-tree.api").tree.find_file()
-        end,
-      })
-
-
       local api = require('nvim-tree.api')
 
       bufmap('<cr>', api.node.open.edit, 'Expand folder or go to file')
@@ -45,6 +33,16 @@ M.config = function()
       bufmap('H', api.tree.toggle_hidden_filter, 'Toggle hidden files')
       bufmap('I', api.tree.toggle_gitignore_filter, 'Toggle git ignored files')
     end
+  })
+
+  vim.api.nvim_create_autocmd("BufEnter", {
+    group = vim.api.nvim_create_augroup("NvimTreeFindFile", { clear = true }),
+    callback = function()
+      local api = require("nvim-tree.api")
+      if api.tree.is_visible() then
+        api.tree.find_file({ open = false, focus = false })
+      end
+    end,
   })
 end
 

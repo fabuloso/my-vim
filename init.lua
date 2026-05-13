@@ -20,13 +20,15 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
+vim.g.lazyvim_check_order = false
 -- Setup lazy.nvim
 require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
   -- Configure any other settings here. See the documentation for more details.
   install = { colorscheme = { "catppuccin-mocha" } },
-  checker = { enabled = true },
-  spec = "plugins",
+  checker = { enabled = true }
 })
 
 vim.diagnostic.config({
@@ -35,10 +37,12 @@ vim.diagnostic.config({
     spacing = 2,
   },
   signs = {
-    Error = "✗",
-    Warn = "▲",
-    Info = "ℹ",
-    Hint = "➤",
+    text = {
+      [vim.diagnostic.severity.ERROR] = "✗",
+      [vim.diagnostic.severity.WARN]  = "▲",
+      [vim.diagnostic.severity.INFO]  = "ℹ",
+      [vim.diagnostic.severity.HINT]  = "➤",
+    },
   },
   underline = true,
   update_in_insert = false,

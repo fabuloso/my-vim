@@ -6,7 +6,7 @@ local M =
     require('dashboard').setup()
   end,
   dependencies = 'nvim-tree/nvim-web-devicons',
-  enable = false
+  enabled = false
 }
 
 return M

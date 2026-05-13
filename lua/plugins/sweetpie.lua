@@ -1,4 +1,4 @@
-return {
+local M = {
   "sweetpie.nvim",
   url = "git@github.com:primait/sweetpie.nvim",
   dependencies = {
@@ -7,3 +7,5 @@ return {
     "colinkennedy/mega.logging",
   },
 }
+
+return M

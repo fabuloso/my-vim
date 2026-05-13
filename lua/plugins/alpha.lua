@@ -3,8 +3,8 @@ local M = {
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	event = 'VimEnter',
 	init = false,
-	config = function()
-		require('alpha').setup(require('alpha.themes.dashboard').config)
+	config = function(_, opts)
+		require('alpha').setup(opts.config)
 	end,
 	opts = function()
 		local dashboard = require('alpha.themes.dashboard')
