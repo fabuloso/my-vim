@@ -32,7 +32,7 @@ local M = {
 		dashboard.section.header.val = vim.split(logo, '\n')
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New File", ":enew<CR>"),
-			dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
+			dashboard.button("f", "  Find File", "<cmd>lua Snacks.picker.files()<CR>"),
 			dashboard.button("l", " Lazy", "<cmd> Lazy <CR>"),
 			dashboard.button("m", " Mason", "<cmd> Mason <CR>"),
 		}

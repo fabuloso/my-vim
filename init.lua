@@ -27,7 +27,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   -- Configure any other settings here. See the documentation for more details.
-  install = { colorscheme = { "catppuccin-mocha" } },
+  install = { colorscheme = { "cyberdream" } },
   checker = { enabled = true }
 })
 
@@ -73,7 +73,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx,
   return orig_handler(err, result, ctx, config)
 end
 
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { silent = true })
 
 vim.opt.number = true
 vim.opt.mouse = "a"
