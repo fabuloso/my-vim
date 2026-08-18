@@ -2,6 +2,17 @@
     "diagnostics.globals": [
         "vim",
         "format",
-        "on_attach"
+        "on_attach",
+        "profile",
+        "is_work",
+        "key",
+        "lkey",
+        "lgroup",
+        "scratch",
+        "close_win",
+        "opt",
+        "fn",
+        "api",
+        "Snacks"
     ]
 }

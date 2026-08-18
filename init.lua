@@ -21,13 +21,18 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.lazyvim_check_order = false
+
+-- Profile system: set NVIM_PROFILE=work on work machines
+_G.profile = vim.env.NVIM_PROFILE or "home"
+function _G.is_work() return _G.profile == "work" end
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
   -- Configure any other settings here. See the documentation for more details.
-  install = { colorscheme = { "cyberdream" } },
+  install = { colorscheme = { "nordfox" } },
   checker = { enabled = true }
 })
 

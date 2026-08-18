@@ -113,12 +113,16 @@ Then ask: "Apply these fixes? [y/n]"
     },
     strategies = {
       chat = {
-        name = "copilot",
-        model = "claude-sonnet-4.6",
+        adapter = {
+          name = "copilot",
+          model = "claude-sonnet-4.6",
+        }
       },
       inline = {
-        name = "copilot",
-        model = "claude-sonnet-4.6",
+        adapter = {
+          name = "copilot",
+          model = "claude-sonnet-4.6",
+        }
       },
     },
     display = {
@@ -131,9 +135,8 @@ Then ask: "Apply these fixes? [y/n]"
     },
   },
   keys = {
-    key("am", function() require("codecompanion").model() end, "change model"),
     lkey("ac", function() require("codecompanion").chat() end, "chat"),
-    lkey("aa", function() require("codecompanion").actions() end, "actions"),
+    lkey("aa", function() require("codecompanion").actions({}) end, "actions"),
     lkey("ai", function()
       local companion = require("codecompanion")
       local input = vim.fn.input("Enter your message: ")

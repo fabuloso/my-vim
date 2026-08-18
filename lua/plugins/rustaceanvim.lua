@@ -20,8 +20,9 @@ M.init = function()
             allFeatures = true,
             buildScripts = { enable = true },
           },
-          checkOnSave = {
+          check = {
             command = 'clippy',
+            extraArgs = { '--', '-A', 'clippy::result_large_err' },
           },
           procMacro = {
             enable = true,

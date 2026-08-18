@@ -1,6 +1,7 @@
 local M = {
   "sweetpie.nvim",
   url = "git@github.com:primait/sweetpie.nvim",
+  cond = is_work,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "colinkennedy/mega.cmdparse",

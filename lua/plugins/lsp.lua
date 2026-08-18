@@ -16,33 +16,23 @@ M.config = function()
       "ts_ls",
       "lua_ls",
       "pyright",
+      "gopls",
       "graphql",
       "phpactor",
     }
   }
+  vim.lsp.enable('gopls')
   vim.lsp.enable('lua_ls')
 
   vim.lsp.config('lua_ls', {
     capabilities = capabilities,
     settings = {
       Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-          path = vim.split(package.path, ";"),
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files and plugins
-          library = { vim.env.VIMRUNTIME },
-          checkThirdParty = false,
-        },
-        telemetry = {
-          enable = false,
-        },
+        runtime = { version = "LuaJIT" },
+        -- lazydev.nvim handles workspace.library automatically
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+        completion = { callSnippet = "Replace" },
       },
     },
   })
