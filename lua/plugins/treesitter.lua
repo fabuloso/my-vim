@@ -1,7 +1,8 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  cmd = "TSUpdate",
-  event = { "BufReadPost", "BufNewFile" }
+  lazy = false,
+  priority = 1000,
+  cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 }
 
 M.config = function()
@@ -11,6 +12,11 @@ M.config = function()
       enable = true,
     },
     ensure_installed = {
+      'vimdoc',
+      'vim',
+      'c',
+      'query',
+      'bash',
       'elixir',
       'lua',
       'graphql',
@@ -25,6 +31,10 @@ M.config = function()
       'css',
       'toml',
       'python',
+      'php',
+      'phpdoc',
+      'twig',
+      'yaml',
     },
     indent = {
       enable = true,

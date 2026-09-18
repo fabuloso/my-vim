@@ -19,7 +19,8 @@ M.config = function()
       "gopls",
       "graphql",
       "phpactor",
-    }
+    },
+    automatic_enable = false,
   }
   vim.lsp.enable('gopls')
   vim.lsp.enable('lua_ls')
@@ -42,27 +43,46 @@ M.config = function()
   vim.lsp.config('graphql', {
     cmd = { "graphql-lsp", "server", "-m", "stream" },
     filetypes = { "graphql" },
-    root_dir = require("lspconfig.util").root_pattern(".git", ".graphqlrc", ".graphqlrc.json"),
+    root_markers = { ".git", ".graphqlrc", ".graphqlrc.json" },
   })
 
   vim.lsp.enable('phpactor')
   vim.lsp.config('phpactor', {
     cmd = { "phpactor", "language-server" },
     filetypes = { "php" },
-    --root_dir = require("lspconfig.util").root_pattern(".git", ".phpactor.json", "psalm.xml", "composer.json"),
+    root_markers = { ".phpactor.json", "composer.json", ".git" },
     init_options = {
-      ["language_server_phpstan.enabled"] = true,
-      ["language_server_psalm.enabled"] = true,
+      -- phpstan/psalm/php-cs-fixer are run through the project's docker toolchain,
+      -- not through the language server (they are far too slow on a monolith).
+      ["language_server_phpstan.enabled"] = false,
+      ["language_server_psalm.enabled"] = false,
+      ["language_server_php_cs_fixer.enabled"] = false,
+
+      -- never let phpactor write a .phpactor.json into the project
+      ["language_server_configuration.auto_config"] = false,
+
+      ["language_server_worse_reflection.inlay_hints.enable"] = true,
+      ["language_server_worse_reflection.inlay_hints.params"] = true,
+      ["language_server_worse_reflection.inlay_hints.types"] = false,
+
+      -- keep the indexer away from build artifacts and non-PHP trees
+      ["indexer.exclude_patterns"] = {
+        "/vendor/**/Tests/**/*",
+        "/vendor/**/tests/**/*",
+        "/vendor/composer/**/*",
+        "/vendor/rector/rector/stubs-rector",
+        "/var/**/*",
+        "/node_modules/**/*",
+        "/elm-stuff/**/*",
+        "/public/bundles/**/*",
+        "/frontend/**/*",
+      },
     },
-    on_attach = function(_, bufnr)
-      local opts = { noremap = true, silent = true }
-      vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    end,
   })
 
   vim.lsp.enable('ts_ls')
   vim.lsp.config('ts_ls', {
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "typescript", "typescriptreact" },
     cmd = { "typescript-language-server", "--stdio" }
   })
 
