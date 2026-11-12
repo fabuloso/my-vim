@@ -60,7 +60,11 @@ local M = {
         },
         formats = {
           key = function(item)
-            return { { "[", hl = "special" }, { item.key, hl = "SnacksDashboardKey_" .. item.key }, { "]", hl = "special" } }
+            return {
+              { "[", hl = "special" },
+              { item.key, hl = "SnacksDashboardKey_" .. item.key },
+              { "]", hl = "special" },
+            }
           end,
         },
         sections = {
