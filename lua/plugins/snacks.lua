@@ -15,14 +15,19 @@ local M = {
     { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Go to Definition" },
     { "gI",         function() Snacks.picker.lsp_implementations() end,   desc = "Go to Implementation" },
     { "gw",         function() Snacks.picker.lsp_workspace_symbols() end, desc = "Lsp Workspace Symbols" },
+    { "<leader>gg", function() Snacks.lazygit() end,                      desc = "Lazygit" },
+    { "<leader>gl", function() Snacks.lazygit.log() end,                  desc = "Lazygit Log" },
+    { "<Tab>",      "<cmd>bnext<CR>",                                     desc = "Next buffer" },
+    { "<S-Tab>",    "<cmd>bprevious<CR>",                                 desc = "Previous buffer" },
+    { "<leader>bd", function() Snacks.bufdelete() end,                    desc = "Delete buffer" },
+    { "<leader>bo", function() Snacks.bufdelete.other() end,              desc = "Delete other buffers" },
+    { "<leader>sm", function() Snacks.picker.marks() end,                 desc = "Marks" },
   },
-}
-
-M.config = function()
-  require('snacks').setup({
+  opts = {
     explorer = { enabled = true },
     picker   = { enabled = true },
-  })
-end
+    lazygit  = { enabled = true },
+  },
+}
 
 return M

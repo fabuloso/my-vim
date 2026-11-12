@@ -44,7 +44,7 @@ Also set: `_G.opt = vim.opt`, `_G.fn = vim.fn`, `_G.api = vim.api`.
 
 | Concern | Plugin |
 |---------|--------|
-| Colorscheme | `cyberdream.nvim` (transparent, 50% saturation) |
+| Colorscheme | `nightfox.nvim` (nordfox, colorblind mode) |
 | Completion | `blink.cmp` + `LuaSnip` + `friendly-snippets` |
 | LSP | `nvim-lspconfig` + `mason-lspconfig` (lua_ls, pyright, ts_ls, graphql, phpactor) |
 | Rust LSP | `rustaceanvim` (replaces lspconfig for Rust; runs clippy on save) |
@@ -54,9 +54,8 @@ Also set: `_G.opt = vim.opt`, `_G.fn = vim.fn`, `_G.api = vim.api`.
 | Diagnostics panel | `trouble.nvim` |
 | Notifications/cmdline | `noice.nvim` |
 | Git hunk signs | `gitsigns.nvim` |
-| Git TUI | `lazygit.nvim` |
+| Git TUI | `Snacks.lazygit` |
 | AI coding assistant | `codecompanion.nvim` using the Copilot adapter (model: `claude-sonnet-4.6`) |
-| Copilot inline | `copilot.lua` (panel enabled, inline suggestions disabled — handled by codecompanion) |
 | Keybinding hints | `which-key.nvim` |
 
 ## Keybinding Groups (`<leader>` = `<Space>`)

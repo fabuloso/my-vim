@@ -1,9 +1,8 @@
-local M = {
-  "tadmccorkle/markdown.nvim",
-  ft = "markdown", -- or 'event = "VeryLazy"'
+return {
+  "MeanderingProgrammer/render-markdown.nvim",
+  ft = { "markdown", "codecompanion" },
+  dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   opts = {
-    -- configuration here or empty for defaults
+    file_types = { "markdown", "codecompanion" },
   },
 }
-
-return M

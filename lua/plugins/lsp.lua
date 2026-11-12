@@ -1,17 +1,18 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
+    "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
   }
 }
 
 M.config = function()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  vim.lsp.config("*", {
+    capabilities = require("blink.cmp").get_lsp_capabilities(),
+  })
 
-  local mason_lspconfig = require("mason-lspconfig")
-
-  mason_lspconfig.setup {
+  require("mason-lspconfig").setup {
     ensure_installed = {
       "ts_ls",
       "lua_ls",
@@ -22,11 +23,9 @@ M.config = function()
     },
     automatic_enable = false,
   }
-  vim.lsp.enable('gopls')
-  vim.lsp.enable('lua_ls')
+  vim.lsp.enable({ "gopls", "lua_ls", "graphql", "phpactor", "ts_ls", "pyright" })
 
   vim.lsp.config('lua_ls', {
-    capabilities = capabilities,
     settings = {
       Lua = {
         runtime = { version = "LuaJIT" },
@@ -38,17 +37,12 @@ M.config = function()
     },
   })
 
-  vim.lsp.enable('graphql')
-
   vim.lsp.config('graphql', {
-    cmd = { "graphql-lsp", "server", "-m", "stream" },
     filetypes = { "graphql" },
     root_markers = { ".git", ".graphqlrc", ".graphqlrc.json" },
   })
 
-  vim.lsp.enable('phpactor')
   vim.lsp.config('phpactor', {
-    cmd = { "phpactor", "language-server" },
     filetypes = { "php" },
     root_markers = { ".phpactor.json", "composer.json", ".git" },
     init_options = {
@@ -80,20 +74,35 @@ M.config = function()
     },
   })
 
-  vim.lsp.enable('ts_ls')
   vim.lsp.config('ts_ls', {
     filetypes = { "typescript", "typescriptreact" },
-    cmd = { "typescript-language-server", "--stdio" }
   })
 
-  vim.lsp.enable('pyright')
+  -- Resolve the project's interpreter: $VIRTUAL_ENV, then .venv/venv, then poetry.
+  local function python_path(root)
+    if vim.env.VIRTUAL_ENV then
+      return vim.env.VIRTUAL_ENV .. "/bin/python"
+    end
+    for _, dir in ipairs({ ".venv", "venv" }) do
+      local p = root .. "/" .. dir .. "/bin/python"
+      if vim.fn.executable(p) == 1 then return p end
+    end
+    if vim.fn.filereadable(root .. "/poetry.lock") == 1 and vim.fn.executable("poetry") == 1 then
+      local res = vim.system({ "poetry", "env", "info", "-p" }, { cwd = root, text = true }):wait()
+      local venv = vim.trim(res.stdout or "")
+      if res.code == 0 and venv ~= "" then return venv .. "/bin/python" end
+    end
+  end
+
   vim.lsp.config('pyright', {
-    capabilities = capabilities,
+    before_init = function(_, config)
+      local p = config.root_dir and python_path(config.root_dir)
+      if p then
+        config.settings.python.pythonPath = p
+      end
+    end,
     settings = {
       python = {
-        formatting = {
-          provider = "black",
-        },
         analysis = {
           autoSearchPaths = true,
           useLibraryCodeForTypes = true

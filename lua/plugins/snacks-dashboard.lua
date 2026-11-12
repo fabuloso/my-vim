@@ -1,13 +1,6 @@
 local M = {
-	'goolord/alpha-nvim',
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	event = 'VimEnter',
-	init = false,
-	config = function(_, opts)
-		require('alpha').setup(opts.config)
-	end,
+	'folke/snacks.nvim',
 	opts = function()
-		local dashboard = require('alpha.themes.dashboard')
 		local logo = [[
 ⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀
 ⠸⣿⣿⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣶⣿⣿⡏
@@ -29,15 +22,25 @@ local M = {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢧⡀⠀⠀⠘⠉⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀⠈⠛⠀⠀⠀⣠⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 		]]
 
-		dashboard.section.header.val = vim.split(logo, '\n')
-		dashboard.section.buttons.val = {
-			dashboard.button("e", "  New File", ":enew<CR>"),
-			dashboard.button("f", "  Find File", "<cmd>lua Snacks.picker.files()<CR>"),
-			dashboard.button("l", " Lazy", "<cmd> Lazy <CR>"),
-			dashboard.button("m", " Mason", "<cmd> Mason <CR>"),
+		return {
+			dashboard = {
+				enabled = true,
+				preset = {
+					header = logo,
+					keys = {
+						{ icon = " ", key = "e", desc = "New File", action = ":enew" },
+						{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+						{ icon = " ", key = "l", desc = "Lazy", action = ":Lazy" },
+						{ icon = " ", key = "m", desc = "Mason", action = ":Mason" },
+					},
+				},
+				sections = {
+					{ section = "header" },
+					{ section = "keys", gap = 1, padding = 1 },
+				},
+			},
 		}
-		return dashboard
-	end
+	end,
 }
 
 return M

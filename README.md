@@ -43,9 +43,9 @@ export NVIM_PROFILE=work
 | Formatting | `conform.nvim` (rustfmt, php-cs-fixer, LSP fallback) |
 | Picker / Explorer | `snacks.nvim` |
 | Diagnostics | `trouble.nvim` |
-| Git | `gitsigns.nvim` + `lazygit.nvim` |
+| Git | `gitsigns.nvim` + `Snacks.lazygit` |
 | AI | `codecompanion.nvim` (Copilot / Claude Sonnet 4.6) |
-| Theme | `cyberdream.nvim` (transparent, colorblind-safe semantic palette) |
+| Theme | `nightfox.nvim` (nordfox, colorblind mode) |
 
 ## Color Accessibility
 

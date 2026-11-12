@@ -9,7 +9,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "zbirenbaum/copilot.lua",
     "cairijun/codecompanion-agentskills.nvim"
   },
   opts = {
