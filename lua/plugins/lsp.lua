@@ -4,7 +4,7 @@ local M = {
     "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-  }
+  },
 }
 
 M.config = function()
@@ -12,7 +12,7 @@ M.config = function()
     capabilities = require("blink.cmp").get_lsp_capabilities(),
   })
 
-  require("mason-lspconfig").setup {
+  require("mason-lspconfig").setup({
     ensure_installed = {
       "ts_ls",
       "lua_ls",
@@ -22,10 +22,10 @@ M.config = function()
       "phpactor",
     },
     automatic_enable = false,
-  }
+  })
   vim.lsp.enable({ "gopls", "lua_ls", "graphql", "phpactor", "ts_ls", "pyright" })
 
-  vim.lsp.config('lua_ls', {
+  vim.lsp.config("lua_ls", {
     settings = {
       Lua = {
         runtime = { version = "LuaJIT" },
@@ -37,12 +37,12 @@ M.config = function()
     },
   })
 
-  vim.lsp.config('graphql', {
+  vim.lsp.config("graphql", {
     filetypes = { "graphql" },
     root_markers = { ".git", ".graphqlrc", ".graphqlrc.json" },
   })
 
-  vim.lsp.config('phpactor', {
+  vim.lsp.config("phpactor", {
     filetypes = { "php" },
     root_markers = { ".phpactor.json", "composer.json", ".git" },
     init_options = {
@@ -74,7 +74,7 @@ M.config = function()
     },
   })
 
-  vim.lsp.config('ts_ls', {
+  vim.lsp.config("ts_ls", {
     filetypes = { "typescript", "typescriptreact" },
   })
 
@@ -85,16 +85,20 @@ M.config = function()
     end
     for _, dir in ipairs({ ".venv", "venv" }) do
       local p = root .. "/" .. dir .. "/bin/python"
-      if vim.fn.executable(p) == 1 then return p end
+      if vim.fn.executable(p) == 1 then
+        return p
+      end
     end
     if vim.fn.filereadable(root .. "/poetry.lock") == 1 and vim.fn.executable("poetry") == 1 then
       local res = vim.system({ "poetry", "env", "info", "-p" }, { cwd = root, text = true }):wait()
       local venv = vim.trim(res.stdout or "")
-      if res.code == 0 and venv ~= "" then return venv .. "/bin/python" end
+      if res.code == 0 and venv ~= "" then
+        return venv .. "/bin/python"
+      end
     end
   end
 
-  vim.lsp.config('pyright', {
+  vim.lsp.config("pyright", {
     before_init = function(_, config)
       local p = config.root_dir and python_path(config.root_dir)
       if p then
@@ -105,10 +109,10 @@ M.config = function()
       python = {
         analysis = {
           autoSearchPaths = true,
-          useLibraryCodeForTypes = true
-        }
-      }
-    }
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
   })
 end
 

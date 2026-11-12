@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
+      { out, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -24,7 +24,9 @@ vim.g.lazyvim_check_order = false
 
 -- Profile system: set NVIM_PROFILE=work on work machines
 _G.profile = vim.env.NVIM_PROFILE or "home"
-function _G.is_work() return _G.profile == "work" end
+function _G.is_work()
+  return _G.profile == "work"
+end
 
 require("config.globals")
 
@@ -35,7 +37,7 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   install = { colorscheme = { "nordfox" } },
-  checker = { enabled = true }
+  checker = { enabled = true },
 })
 
 vim.diagnostic.config({
@@ -46,9 +48,9 @@ vim.diagnostic.config({
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "✗",
-      [vim.diagnostic.severity.WARN]  = "▲",
-      [vim.diagnostic.severity.INFO]  = "ℹ",
-      [vim.diagnostic.severity.HINT]  = "➤",
+      [vim.diagnostic.severity.WARN] = "▲",
+      [vim.diagnostic.severity.INFO] = "ℹ",
+      [vim.diagnostic.severity.HINT] = "➤",
     },
   },
   underline = true,

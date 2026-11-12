@@ -5,35 +5,35 @@ local M = {
 }
 
 M.config = function()
-  local configuration = require('nvim-treesitter.configs')
+  local configuration = require("nvim-treesitter.configs")
   configuration.setup({
     highlight = {
       enable = true,
     },
     ensure_installed = {
-      'vimdoc',
-      'vim',
-      'c',
-      'query',
-      'bash',
-      'elixir',
-      'lua',
-      'graphql',
-      'json',
-      'jsonc',
-      'rust',
-      'markdown',
-      'markdown_inline',
-      'javascript',
-      'typescript',
-      'tsx',
-      'css',
-      'toml',
-      'python',
-      'php',
-      'phpdoc',
-      'twig',
-      'yaml',
+      "vimdoc",
+      "vim",
+      "c",
+      "query",
+      "bash",
+      "elixir",
+      "lua",
+      "graphql",
+      "json",
+      "jsonc",
+      "rust",
+      "markdown",
+      "markdown_inline",
+      "javascript",
+      "typescript",
+      "tsx",
+      "css",
+      "toml",
+      "python",
+      "php",
+      "phpdoc",
+      "twig",
+      "yaml",
     },
     indent = {
       enable = true,
@@ -46,6 +46,5 @@ M.config = function()
   opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
   opt.foldlevel = 9
 end
-
 
 return M

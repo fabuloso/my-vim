@@ -1,6 +1,6 @@
 local M = {
-  'mrcjkb/rustaceanvim',
-  version = '^5',
+  "mrcjkb/rustaceanvim",
+  version = "^5",
   ft = "rust",
 }
 
@@ -8,21 +8,26 @@ M.init = function()
   vim.g.rustaceanvim = {
     server = {
       on_attach = function(_, bufnr)
-        vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename,                    { buffer = bufnr, desc = "Rename" })
-        vim.keymap.set('n', '<leader>ce', '<Cmd>RustLsp relatedDiagnostics<CR>', { buffer = bufnr, desc = "Related Diagnostics" })
-        vim.keymap.set('n', '<leader>cm', '<Cmd>RustLsp expandMacro<CR>',        { buffer = bufnr, desc = "Expand Macro" })
-        vim.keymap.set('n', '<leader>ca', '<Cmd>RustLsp codeAction<CR>',         { buffer = bufnr, desc = "Code Action" })
-        vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action,               { buffer = bufnr, desc = "Code Action (visual)" })
+        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+        vim.keymap.set(
+          "n",
+          "<leader>ce",
+          "<Cmd>RustLsp relatedDiagnostics<CR>",
+          { buffer = bufnr, desc = "Related Diagnostics" }
+        )
+        vim.keymap.set("n", "<leader>cm", "<Cmd>RustLsp expandMacro<CR>", { buffer = bufnr, desc = "Expand Macro" })
+        vim.keymap.set("n", "<leader>ca", "<Cmd>RustLsp codeAction<CR>", { buffer = bufnr, desc = "Code Action" })
+        vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action (visual)" })
       end,
       default_settings = {
-        ['rust-analyzer'] = {
+        ["rust-analyzer"] = {
           cargo = {
             allFeatures = true,
             buildScripts = { enable = true },
           },
           check = {
-            command = 'clippy',
-            extraArgs = { '--', '-A', 'clippy::result_large_err' },
+            command = "clippy",
+            extraArgs = { "--", "-A", "clippy::result_large_err" },
           },
           procMacro = {
             enable = true,

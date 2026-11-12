@@ -1,7 +1,7 @@
 local M = {
-	'folke/snacks.nvim',
-	opts = function()
-		local logo = [[
+  "folke/snacks.nvim",
+  opts = function()
+    local logo = [[
 ⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀
 ⠸⣿⣿⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣶⣿⣿⡏
 ⠀⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⢠⣄⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣿⣿⣿⣿⣿⣿⣿⠁
@@ -22,25 +22,25 @@ local M = {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢧⡀⠀⠀⠘⠉⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀⠈⠛⠀⠀⠀⣠⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 		]]
 
-		return {
-			dashboard = {
-				enabled = true,
-				preset = {
-					header = logo,
-					keys = {
-						{ icon = " ", key = "e", desc = "New File", action = ":enew" },
-						{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
-						{ icon = " ", key = "l", desc = "Lazy", action = ":Lazy" },
-						{ icon = " ", key = "m", desc = "Mason", action = ":Mason" },
-					},
-				},
-				sections = {
-					{ section = "header" },
-					{ section = "keys", gap = 1, padding = 1 },
-				},
-			},
-		}
-	end,
+    return {
+      dashboard = {
+        enabled = true,
+        preset = {
+          header = logo,
+          keys = {
+            { icon = " ", key = "e", desc = "New File", action = ":enew" },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+            { icon = " ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
+          },
+        },
+        sections = {
+          { section = "header" },
+          { section = "keys", gap = 1, padding = 1 },
+        },
+      },
+    }
+  end,
 }
 
 return M

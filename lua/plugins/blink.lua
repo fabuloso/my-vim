@@ -6,13 +6,17 @@ return {
       "L3MON4D3/LuaSnip",
       version = "2.*",
       build = (function()
-        if vim.fn.executable("make") == 0 then return end
+        if vim.fn.executable("make") == 0 then
+          return
+        end
         return "make install_jsregexp"
       end)(),
       dependencies = {
         {
           "rafamadriz/friendly-snippets",
-          config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+          config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+          end,
         },
       },
     },
@@ -23,8 +27,16 @@ return {
       keymap = {
         ["<up>"] = { "select_prev", "fallback" },
         ["<down>"] = { "select_next", "fallback" },
-        ["<c-up>"] = { function(cmp) cmp.scroll_documentation_up(4) end },
-        ["<c-down>"] = { function(cmp) cmp.scroll_documentation_down(4) end },
+        ["<c-up>"] = {
+          function(cmp)
+            cmp.scroll_documentation_up(4)
+          end,
+        },
+        ["<c-down>"] = {
+          function(cmp)
+            cmp.scroll_documentation_down(4)
+          end,
+        },
         ["<cr>"] = { "accept", "fallback" },
         ["<c-x>"] = { "cancel", "fallback" },
       },

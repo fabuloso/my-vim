@@ -6,14 +6,14 @@ return {
     local elixir = require("elixir")
     local elixirls = require("elixir.elixirls")
 
-    elixir.setup {
+    elixir.setup({
       nextls = { enable = false },
       elixirls = {
         enable = true,
-        settings = elixirls.settings {
+        settings = elixirls.settings({
           dialyzerEnabled = false,
           enableTestLenses = false,
-        },
+        }),
         on_attach = function(_client, _bufnr)
           vim.keymap.set("n", "<leader>fp", "<Cmd>ElixirFromPipe<CR>", {
             buffer = true,
@@ -30,9 +30,9 @@ return {
         end,
       },
       projectionist = {
-        enable = true
-      }
-    }
+        enable = true,
+      },
+    })
   end,
   dependencies = {
     "nvim-lua/plenary.nvim",

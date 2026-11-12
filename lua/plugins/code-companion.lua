@@ -9,7 +9,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "cairijun/codecompanion-agentskills.nvim"
+    "cairijun/codecompanion-agentskills.nvim",
   },
   opts = {
     adapters = {
@@ -28,8 +28,9 @@ return {
     extensions = {
       agentskills = {
         opts = {
-          paths = { vim.fn.getcwd() .. "/.github/skills", recursive = true } }
-      }
+          paths = { vim.fn.getcwd() .. "/.github/skills", recursive = true },
+        },
+      },
     },
     prompt_library = {
       ["Lsp fix"] = {
@@ -46,7 +47,9 @@ return {
               name = "Collect Issues",
               role = constants.USER_ROLE,
               opts = { auto_submit = false },
-              repeat_until = function(chat) return chat.tool_registry.flags.testing == true end,
+              repeat_until = function(chat)
+                return chat.tool_registry.flags.testing == true
+              end,
               content = function()
                 vim.g.codecompanion_yolo_mode = true
                 return [[
@@ -70,13 +73,13 @@ Then ask: "Apply these fixes? [y/n]"
         adapter = {
           name = "copilot",
           model = "claude-sonnet-4.6",
-        }
+        },
       },
       inline = {
         adapter = {
           name = "copilot",
           model = "claude-sonnet-4.6",
-        }
+        },
       },
     },
     display = {
@@ -89,8 +92,12 @@ Then ask: "Apply these fixes? [y/n]"
     },
   },
   keys = {
-    lkey("ac", function() require("codecompanion").chat() end, "chat"),
-    lkey("aa", function() require("codecompanion").actions({}) end, "actions"),
+    lkey("ac", function()
+      require("codecompanion").chat()
+    end, "chat"),
+    lkey("aa", function()
+      require("codecompanion").actions({})
+    end, "actions"),
     lkey("ai", function()
       local companion = require("codecompanion")
       local input = vim.fn.input("Enter your message: ")

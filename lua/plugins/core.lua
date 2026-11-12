@@ -5,6 +5,6 @@ return {
     version = false,
     opts = {
       colorscheme = "nordfox",
-    }
+    },
   },
 }

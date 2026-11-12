@@ -13,10 +13,10 @@ return {
       signature = { enabled = false }, -- già gestita da blink.cmp
     },
     presets = {
-      bottom_search = true,        -- barra di ricerca in basso
-      command_palette = true,      -- cmdline + popup unificati
+      bottom_search = true, -- barra di ricerca in basso
+      command_palette = true, -- cmdline + popup unificati
       long_message_to_split = true, -- messaggi lunghi in split
-      lsp_doc_border = true,       -- bordo per hover LSP
+      lsp_doc_border = true, -- bordo per hover LSP
     },
   },
 }
