@@ -130,6 +130,8 @@ local M = {
     explorer = { enabled = true },
     picker = { enabled = true },
     lazygit = { enabled = true },
+    indent = { enabled = true },
+    scope = { enabled = true },
   },
 }
 
