@@ -84,7 +84,6 @@ Notable bindings: `<leader>s` smart file find, `<leader>e` explorer, `<leader>fw
 
 - `lua_ls` is explicitly enabled via `vim.lsp.enable()` (Neovim 0.11+ API); other servers follow the same pattern.
 - `.luarc.json` declares `vim`, `format`, and `on_attach` as known globals for the Lua LSP.
-- A custom `textDocument/publishDiagnostics` handler in `init.lua` sanitizes malformed `tags` fields from LSP responses to prevent errors.
 - Rust uses `rustaceanvim` exclusively — do **not** configure `rust-analyzer` through `lspconfig`.
 - Elixir uses `elixir-tools.nvim` — do **not** configure `elixirls` through `lspconfig`.
 

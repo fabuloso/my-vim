@@ -10,7 +10,7 @@ local M = {
     { "<leader>fr", function() Snacks.picker.recent() end,                desc = "Recents" },
     { "<leader>fb", function() Snacks.picker.buffers() end,               desc = "Buffers" },
     { "<leader>cd", function() Snacks.picker.diagnostics() end,           desc = "Workspace Diagnostics" },
-    { "<leader>ca", function() vim.lsp.buf.code_action() end,             desc = "Code Actions" },
+    { "<leader>ca", function() vim.lsp.buf.code_action() end,             desc = "Code Actions", mode = { "n", "v" } },
     { "gr",         function() Snacks.picker.lsp_references() end,        desc = "References" },
     { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Go to Definition" },
     { "gI",         function() Snacks.picker.lsp_implementations() end,   desc = "Go to Implementation" },

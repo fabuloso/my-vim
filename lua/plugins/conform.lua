@@ -7,10 +7,11 @@ M.config = function()
     formatters_by_ft = {
       rust = { "rustfmt" },
       php = { "php_cs_fixer" },
+      python = { "isort", "black" },
     },
     format_on_save = {
       lsp_format = "fallback",
-      timeout = 500,
+      timeout_ms = 2000,
     },
   })
 end

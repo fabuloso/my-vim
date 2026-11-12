@@ -26,6 +26,8 @@ vim.g.lazyvim_check_order = false
 _G.profile = vim.env.NVIM_PROFILE or "home"
 function _G.is_work() return _G.profile == "work" end
 
+require("config.globals")
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -53,31 +55,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
-
-local orig_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
-  -- Se non c'è result o diagnostics, lascia tutto com'è
-  if not result or type(result.diagnostics) ~= "table" then
-    return orig_handler(err, result, ctx, config)
-  end
-
-  for _, d in ipairs(result.diagnostics) do
-    -- 1) A volte tags è non-table (stringa, numero, ecc.) → lo annulliamo
-    if d.tags ~= nil and type(d.tags) ~= "table" then
-      d.tags = nil
-    end
-
-    -- 2) A volte viene passato un "oggetto" invece di un array numerico
-    --    Se la tabella non ha indice 1, la trattiamo come non valida
-    if type(d.tags) == "table" and d.tags[1] == nil then
-      d.tags = nil
-    end
-  end
-
-  return orig_handler(err, result, ctx, config)
-end
-
 
 vim.opt.number = true
 vim.opt.mouse = "a"

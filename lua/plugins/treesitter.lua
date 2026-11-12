@@ -1,7 +1,6 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
-  priority = 1000,
   cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 }
 
@@ -39,11 +38,6 @@ M.config = function()
     indent = {
       enable = true,
     },
-    rainbow = {
-      enable = true,
-      extended_mode = true,
-      max_file_lines = nil,
-    }
   })
 
   local opt = vim.opt
