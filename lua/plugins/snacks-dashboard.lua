@@ -1,5 +1,12 @@
 local M = {
   "folke/snacks.nvim",
+  init = function()
+    local function set_hl()
+      vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#ebcb8b" })
+    end
+    set_hl()
+    vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
+  end,
   opts = function()
     local logo = [[
 ⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀
