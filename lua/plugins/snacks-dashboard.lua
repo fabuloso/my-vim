@@ -35,10 +35,13 @@ local M = {
         preset = {
           header = logo,
           keys = {
-            { icon = " ", key = "e", desc = "New File", action = ":enew" },
-            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
-            { icon = " ", key = "l", desc = "Lazy", action = ":Lazy" },
-            { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
+            { icon = " ", key = "e", desc = "New File", action = ":enew" },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
+            { icon = " ", key = "g", desc = "Grep", action = ":lua Snacks.picker.grep()" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
         sections = {
