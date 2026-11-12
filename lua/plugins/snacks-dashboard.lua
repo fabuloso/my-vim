@@ -2,7 +2,9 @@ local M = {
   "folke/snacks.nvim",
   init = function()
     local function set_hl()
-      vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#ebcb8b" })
+      for _, group in ipairs({ "Header", "Icon", "Desc", "Key" }) do
+        vim.api.nvim_set_hl(0, "SnacksDashboard" .. group, { fg = "#ebcb8b" })
+      end
     end
     set_hl()
     vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
